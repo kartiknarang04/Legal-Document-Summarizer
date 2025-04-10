@@ -1,0 +1,7 @@
+flask==2.2.3
+flask-cors==3.0.10
+pymongo==4.3.3
+PyPDF2==3.0.1
+python-dotenv==1.0.0
+Werkzeug==2.2.3
+peft==0.4.0

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Document Summarizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Legal Document Summarizer</h1>
+            <p>Upload a legal document (PDF) to get an AI-generated summary</p>
+            <div class="model-info" id="model-info">
+                <span class="model-badge">Custom T5 Model</span>
+            </div>
+        </header>
+
+        <main>
+            <section class="upload-section">
+                <div class="upload-container" id="upload-container">
+                    <div class="upload-area" id="upload-area">
+                        <img src="{{ url_for('static', filename='img/upload.svg') }}" alt="Upload" class="upload-icon">
+                        <p>Drag & drop your PDF here or</p>
+                        <label for="file-input" class="upload-button">Browse Files</label>
+                        <input type="file" id="file-input" accept=".pdf" hidden>
+                    </div>
+                    <div class="file-info" id="file-info" style="display: none;">
+                        <p id="file-name"></p>
+                        <button id="change-file">Change</button>
+                    </div>
+                    <button id="submit-button" class="submit-button" disabled>Generate Summary</button>
+                </div>
+                <div class="loading" id="loading" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Processing document...</p>
+                    <p class="processing-note">Chunking and summarizing large documents may take a moment</p>
+                </div>
+            </section>
+
+            <section class="result-section" id="result-section" style="display: none;">
+                <h2>Document Summary</h2>
+                <div class="document-info">
+                    <p><strong>File:</strong> <span id="result-filename"></span></p>
+                </div>
+                <div class="summary-container">
+                    <h3>Summary</h3>
+                    <div class="summary-content" id="summary-content"></div>
+                </div>
+                <button id="new-upload" class="new-upload-button">Upload Another Document</button>
+            </section>
+
+            <section class="history-section">
+                <h2>Previous Summaries</h2>
+                <div class="history-list" id="history-list">
+                    <p class="loading-history">Loading history...</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Legal Document Summarizer | Powered by Custom Fine-tuned T5 Model</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
